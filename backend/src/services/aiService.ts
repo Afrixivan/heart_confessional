@@ -24,8 +24,8 @@ const SYSTEM_PROMPT = `你是一个名叫"心灵树洞"的大学生心理健康�
 // 获取配置（延迟到运行时读取，确保 dotenv 已加载）
 function getConfig() {
   const apiKey = process.env.AI_API_KEY || '';
-  const apiUrl = process.env.AI_API_URL || 'https://ark.cn-beijing.volces.com/api/v3';
-  const model = process.env.AI_MODEL || 'doubao-seed-2-0-mini-260428';
+  const apiUrl = process.env.AI_API_URL || 'https://api.openai.com/v1';
+  const model = process.env.AI_MODEL || 'gpt-3.5-turbo';
   
   // 只有当 API key 配置有效时才创建 OpenAI 实例
   let openai: OpenAI | null = null;

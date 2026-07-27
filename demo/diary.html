@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>情绪日记 - 心灵树洞</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <div class="logo" onclick="location.href='index.html'">
+        <div class="logo-icon">🌳</div>
+        <span>心灵树洞</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <a href="chat.html">对话陪伴</a>
+        <a href="emotion.html">情绪分析</a>
+        <a href="knowledge.html">心理知识</a>
+        <a href="test.html">心理测试</a>
+        <a href="diary.html" class="active">情绪日记</a>
+      </div>
+      <div class="user-menu">
+        <button class="btn btn-outline">登录</button>
+        <div class="user-avatar">👤</div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="diary-container">
+    <div class="container">
+      <div class="diary-header">
+        <div>
+          <h2 class="section-title">情绪日记</h2>
+          <p style="color: #666;">记录心情，见证成长</p>
+        </div>
+        <button id="add-diary-btn" class="btn btn-primary">+ 写日记</button>
+      </div>
+
+      <div class="category-tabs" style="margin-bottom: 30px;">
+        <button class="category-tab active">全部</button>
+        <button class="category-tab">开心</button>
+        <button class="category-tab">难过</button>
+        <button class="category-tab">焦虑</button>
+        <button class="category-tab">生气</button>
+        <button class="category-tab">平静</button>
+      </div>
+
+      <div class="diary-list">
+        <div class="diary-card">
+          <div class="diary-card-header">
+            <span class="diary-emotion-tag happy">😊 开心</span>
+            <span class="diary-date">2026-07-17</span>
+          </div>
+          <h3 class="diary-title">今天收到了offer！</h3>
+          <p class="diary-content">今天收到了心仪公司的实习offer，真的太开心了！从投递简历到面试，经历了很多波折，终于有了回报。感谢这段时间努力的自己，也感谢朋友们的鼓励和支持。接下来要好好准备实习，争取学到更多东西！</p>
+          <div class="diary-category">💼 日常生活</div>
+        </div>
+
+        <div class="diary-card">
+          <div class="diary-card-header">
+            <span class="diary-emotion-tag anxious">😰 焦虑</span>
+            <span class="diary-date">2026-07-16</span>
+          </div>
+          <h3 class="diary-title">期末复习压力好大</h3>
+          <p class="diary-content">还有两周就要期末考试了，但是感觉很多东西都还没复习完。高数、线代、专业课...每一门都很难。晚上睡不着，白天学不进去，这种感觉太难受了。真的很担心自己考不好，对不起父母的期望。</p>
+          <div class="diary-category">📚 学业压力</div>
+        </div>
+
+        <div class="diary-card">
+          <div class="diary-card-header">
+            <span class="diary-emotion-tag sad">😔 难过</span>
+            <span class="diary-date">2026-07-15</span>
+          </div>
+          <h3 class="diary-title">和室友吵架了</h3>
+          <p class="diary-content">今天和室友因为一点小事吵架了，其实也不是什么大问题，但当时就是控制不住情绪。现在冷静下来想想，觉得很后悔。我们在一起住了两年，一直相处得很好，不应该因为这点小事影响感情。明天找个机会好好聊聊吧。</p>
+          <div class="diary-category">👥 人际关系</div>
+        </div>
+
+        <div class="diary-card">
+          <div class="diary-card-header">
+            <span class="diary-emotion-tag neutral">😐 平静</span>
+            <span class="diary-date">2026-07-14</span>
+          </div>
+          <h3 class="diary-title">平淡的一天</h3>
+          <p class="diary-content">今天过得很平淡，上课、自习、吃饭、睡觉，和往常一样。虽然没有什么特别的事情发生，但这种平静的感觉也挺好的。有时候不需要太多波澜，平平淡淡也是一种幸福。</p>
+          <div class="diary-category">📝 情绪记录</div>
+        </div>
+
+        <div class="diary-card">
+          <div class="diary-card-header">
+            <span class="diary-emotion-tag happy">😊 开心</span>
+            <span class="diary-date">2026-07-13</span>
+          </div>
+          <h3 class="diary-title">和朋友们去野餐</h3>
+          <p class="diary-content">今天天气很好，和几个好朋友一起去公园野餐了。我们带了很多好吃的，聊了很多开心的话题。看着蓝天白云，吃着美食，和朋友们在一起，真的很幸福。这种简单的快乐，希望能一直保持下去。</p>
+          <div class="diary-category">💼 日常生活</div>
+        </div>
+
+        <div class="diary-card">
+          <div class="diary-card-header">
+            <span class="diary-emotion-tag angry">😠 生气</span>
+            <span class="diary-date">2026-07-12</span>
+          </div>
+          <h3 class="diary-title">被放鸽子了</h3>
+          <p class="diary-content">今天本来约好了和朋友一起去看电影，我提前半小时就到了电影院，结果朋友说临时有事来不了了。我真的很生气，明明昨天还确认过的，为什么不早点告诉我？白白浪费了我一下午的时间，现在心情特别差。</p>
+          <div class="diary-category">👥 人际关系</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

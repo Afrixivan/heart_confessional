@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>心理测试 - 心灵树洞</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <div class="logo" onclick="location.href='index.html'">
+        <div class="logo-icon">🌳</div>
+        <span>心灵树洞</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <a href="chat.html">对话陪伴</a>
+        <a href="emotion.html">情绪分析</a>
+        <a href="knowledge.html">心理知识</a>
+        <a href="test.html" class="active">心理测试</a>
+        <a href="diary.html">情绪日记</a>
+      </div>
+      <div class="user-menu">
+        <button class="btn btn-outline">登录</button>
+        <div class="user-avatar">👤</div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="test-container" id="test-container">
+    <div class="container">
+      <h2 class="section-title">心理测试</h2>
+      <p class="section-subtitle">通过科学的心理量表，了解自己的心理状态</p>
+      
+      <div class="test-list">
+        <div class="test-card" data-test-id="sas">
+          <div class="test-icon">📊</div>
+          <h3 class="test-title">焦虑自评量表(SAS)</h3>
+          <p class="test-description">用于评估焦虑症状的严重程度，包含20个题目，约5分钟完成。</p>
+          <div class="test-meta">
+            <span>📝 20题</span>
+            <span>⏱️ 5分钟</span>
+          </div>
+          <button class="test-start-btn" onclick="startTest('sas')">开始测试</button>
+        </div>
+
+        <div class="test-card" data-test-id="sds">
+          <div class="test-icon">🌧️</div>
+          <h3 class="test-title">抑郁自评量表(SDS)</h3>
+          <p class="test-description">用于评估抑郁症状的严重程度，包含20个题目，约5分钟完成。</p>
+          <div class="test-meta">
+            <span>📝 20题</span>
+            <span>⏱️ 5分钟</span>
+          </div>
+          <button class="test-start-btn" onclick="startTest('sds')">开始测试</button>
+        </div>
+
+        <div class="test-card" data-test-id="stress">
+          <div class="test-icon">⚡</div>
+          <h3 class="test-title">压力水平测试</h3>
+          <p class="test-description">评估当前的压力水平和应对能力，包含15个题目，约3分钟完成。</p>
+          <div class="test-meta">
+            <span>📝 15题</span>
+            <span>⏱️ 3分钟</span>
+          </div>
+          <button class="test-start-btn" onclick="startTest('stress')">开始测试</button>
+        </div>
+
+        <div class="test-card" data-test-id="sleep">
+          <div class="test-icon">😴</div>
+          <h3 class="test-title">睡眠质量测试</h3>
+          <p class="test-description">评估睡眠质量和睡眠障碍情况，包含10个题目，约2分钟完成。</p>
+          <div class="test-meta">
+            <span>📝 10题</span>
+            <span>⏱️ 2分钟</span>
+          </div>
+          <button class="test-start-btn" onclick="startTest('sleep')">开始测试</button>
+        </div>
+
+        <div class="test-card" data-test-id="personality">
+          <div class="test-icon">👤</div>
+          <h3 class="test-title">性格类型测试</h3>
+          <p class="test-description">基于MBTI理论的性格类型测试，帮助了解自己的性格特点。</p>
+          <div class="test-meta">
+            <span>📝 40题</span>
+            <span>⏱️ 10分钟</span>
+          </div>
+          <button class="test-start-btn" onclick="startTest('personality')">开始测试</button>
+        </div>
+
+        <div class="test-card" data-test-id="self-esteem">
+          <div class="test-icon">⭐</div>
+          <h3 class="test-title">自信心测试</h3>
+          <p class="test-description">评估自信心水平和自我价值感，包含15个题目，约3分钟完成。</p>
+          <div class="test-meta">
+            <span>📝 15题</span>
+            <span>⏱️ 3分钟</span>
+          </div>
+          <button class="test-start-btn" onclick="startTest('self-esteem')">开始测试</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="question-container"></div>
+  <div id="result-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

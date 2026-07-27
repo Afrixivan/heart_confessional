@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>心灵树洞 - 大学生心理健康智能陪伴</title>
+  <style>
+    :root {
+      --primary-color: #FFB7C5;
+      --primary-light: #FFD4DE;
+      --primary-dark: #FF8BA3;
+      --secondary-purple: #E6E6FA;
+      --secondary-green: #98FB98;
+      --secondary-green-light: #C1FFC1;
+      --background-color: #FFF5F5;
+      --background-card: #FFFFFF;
+      --text-primary: #333333;
+      --text-secondary: #666666;
+      --text-muted: #999999;
+      --border-color: #FFE4E9;
+      --shadow-light: 0 2px 8px rgba(255, 183, 197, 0.15);
+      --shadow-medium: 0 4px 16px rgba(255, 183, 197, 0.25);
+      --shadow-hover: 0 6px 24px rgba(255, 183, 197, 0.35);
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 28px;
+      --radius-full: 50px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-purple) 100%);
+      padding: 20px 0;
+      box-shadow: var(--shadow-light);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav { display: flex; justify-content: space-between; align-items: center; }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 24px; font-weight: 700; color: white;
+      cursor: pointer; transition: transform 0.3s ease;
+    }
+    .logo:hover { transform: scale(1.05); }
+    .logo-icon {
+      width: 40px; height: 40px;
+      background: white; border-radius: var(--radius-full);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a {
+      color: white; font-weight: 500;
+      padding: 8px 16px; border-radius: var(--radius-full);
+      transition: all 0.3s ease; cursor: pointer;
+    }
+    .nav-links a:hover { background: rgba(255,255,255,0.2); }
+    .nav-links a.active { background: white; color: var(--primary-color); }
+    .user-menu { display: flex; align-items: center; gap: 15px; }
+    .user-avatar {
+      width: 40px; height: 40px; border-radius: var(--radius-full);
+      background: white; display: flex; align-items: center; justify-content: center;
+      font-size: 16px; cursor: pointer; transition: transform 0.3s ease;
+    }
+    .user-avatar:hover { transform: scale(1.1); }
+
+    .btn {
+      padding: 10px 24px; border-radius: var(--radius-full);
+      font-weight: 600; cursor: pointer; border: none;
+      transition: all 0.3s ease; display: inline-flex;
+      align-items: center; gap: 8px; font-size: 14px;
+    }
+    .btn-primary { background: var(--primary-color); color: white; }
+    .btn-primary:hover { background: var(--primary-dark); box-shadow: var(--shadow-medium); transform: translateY(-2px); }
+    .btn-secondary { background: white; color: var(--primary-color); border: 2px solid var(--primary-color); }
+    .btn-secondary:hover { background: var(--primary-light); }
+    .btn-outline { background: transparent; color: white; border: 2px solid white; }
+    .btn-outline:hover { background: rgba(255,255,255,0.2); }
+
+    .page-container { animation: fadeIn 0.3s ease; display: none; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-purple) 100%);
+      padding: 80px 0; text-align: center; color: white;
+    }
+    .hero-title { font-size: 48px; font-weight: 700; margin-bottom: 20px; }
+    .hero-subtitle { font-size: 20px; opacity: 0.9; margin-bottom: 40px; }
+    .hero-actions { display: flex; justify-content: center; gap: 20px; }
+
+    .features-section { padding: 60px 0; }
+    .section-title { text-align: center; font-size: 32px; font-weight: 700; margin-bottom: 10px; }
+    .section-subtitle { text-align: center; color: var(--text-secondary); margin-bottom: 50px; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .feature-card {
+      background: var(--background-card); border-radius: var(--radius-lg);
+      padding: 40px 30px; text-align: center; box-shadow: var(--shadow-light);
+      transition: all 0.3s ease; cursor: pointer;
+    }
+    .feature-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-8px); }
+    .feature-icon {
+      width: 80px; height: 80px; border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-purple) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 36px; margin: 0 auto 20px;
+    }
+    .feature-title { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+    .feature-description { color: var(--text-secondary); font-size: 14px; line-height: 1.7; }
+
+    .footer {
+      background: var(--text-primary); color: white;
+      padding: 40px 0 20px; margin-top: 60px;
+    }
+    .footer-content {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px; margin-bottom: 30px;
+    }
+    .footer-section h4 { margin-bottom: 20px; font-size: 18px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { color: rgba(255,255,255,0.7); transition: color 0.3s ease; }
+    .footer-links a:hover { color: white; }
+    .footer-bottom {
+      text-align: center; padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.5); font-size: 14px;
+    }
+
+    .chat-container { display: flex; height: calc(100vh - 80px); }
+    .chat-sidebar {
+      width: 320px; background: var(--background-card);
+      border-right: 1px solid var(--border-color);
+      display: flex; flex-direction: column;
+    }
+    .sidebar-header { padding: 20px; border-bottom: 1px solid var(--border-color); }
+    .sidebar-title { font-size: 18px; font-weight: 600; margin-bottom: 15px; }
+    .new-chat-btn {
+      width: 100%; padding: 12px; background: var(--primary-color);
+      color: white; border: none; border-radius: var(--radius-md);
+      font-weight: 600; cursor: pointer; transition: all 0.3s ease;
+    }
+    .new-chat-btn:hover { background: var(--primary-dark); }
+    .conversation-list { flex: 1; overflow-y: auto; padding: 10px; }
+    .conversation-item {
+      padding: 15px; border-radius: var(--radius-md);
+      cursor: pointer; transition: all 0.3s ease; margin-bottom: 5px;
+    }
+    .conversation-item:hover { background: var(--background-color); }
+    .conversation-item.active { background: var(--primary-light); }
+    .conversation-preview { display: flex; gap: 12px; }
+    .conversation-avatar {
+      width: 44px; height: 44px; border-radius: var(--radius-full);
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-purple) 100%);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .conversation-info { flex: 1; min-width: 0; }
+    .conversation-title { font-weight: 600; margin-bottom: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .conversation-last-message { font-size: 13px; color: var(--text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .conversation-time { font-size: 12px; color: var(--text-muted); }
+
+    .chat-main { flex: 1; display: flex; flex-direction: column; background: var(--background-color); }
+    .chat-header {
+      padding: 20px; background: var(--background-card);
+      border-bottom: 1px solid var(--border-color);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .chat-title { font-size: 18px; font-weight: 600; }
+    .chat-actions { display: flex; gap: 10px; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+    .message {
+      max-width: 70%; padding: 15px 20px; border-radius: var(--radius-lg);
+      animation: fadeIn 0.3s ease;
+    }
+    .message.user {
+      background: var(--primary-color); color: white;
+      align-self: flex-end; border-bottom-right-radius: 8px;
+    }
+    .message.assistant {
+      background: var(--background-card); color: var(--text-primary);
+      align-self: flex-start; border-bottom-left-radius: 8px;
+      box-shadow: var(--shadow-light);
+    }
+    .message-content { font-size: 15px; line-height: 1.7; }
+    .message-time { font-size: 12px; opacity: 0.7; margin-top: 8px; text-align: right; }
+
+    .typing-indicator {
+      display: flex; gap: 8px; padding: 15px 20px;
+      background: var(--background-card); border-radius: var(--radius-lg);
+      border-bottom-left-radius: 8px; align-self: flex-start;
+    }
+    .typing-dot {
+      width: 8px; height: 8px; background: var(--primary-color);
+      border-radius: var(--radius-full);
+      animation: typing 1.4s infinite ease-in-out;
+    }
+    .typing-dot:nth-child(1) { animation-delay: 0s; }
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing {
+      0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
+      40% { transform: scale(1); opacity: 1; }
+    }
+
+    .chat-input-area {
+      padding: 20px; background: var(--background-card);
+      border-top: 1px solid var(--border-color);
+    }
+    .input-container {
+      display: flex; gap: 10px; align-items: flex-end;
+      background: var(--background-color); border-radius: var(--radius-lg);
+      padding: 10px; border: 2px solid var(--border-color);
+      transition: border-color 0.3s ease;
+    }
+    .input-container:focus-within { border-color: var(--primary-color); }
+    .chat-input {
+      flex: 1; padding: 12px 15px; border: none;
+      background: transparent; font-size: 15px; resize: none;
+      min-height: 44px; max-height: 150px; outline: none;
+    }
+    .chat-input::placeholder { color: var(--text-muted); }
+    .send-btn {
+      width: 44px; height: 44px; border-radius: var(--radius-full);
+      background: var(--primary-color); border: none; color: white;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s ease; flex-shrink: 0;
+    }
+    .send-btn:hover { background: var(--primary-dark); transform: scale(1.05); }
+    .send-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .emotion-analysis-container { padding: 40px 20px; }
+    .time-range-selector { display: flex; gap: 10px; margin-bottom: 30px; justify-content: center; }
+    .time-btn {
+      padding: 10px 24px; border-radius: var(--radius-full);
+      border: 2px solid var(--border-color); background: var(--background-card);
+      cursor: pointer; transition: all 0.3s ease;
+    }
+    .time-btn:hover { border-color: var(--primary-color); }
+    .time-btn.active { background: var(--primary-color); color: white; border-color: var(--primary-color); }
+
+    .charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; margin-bottom: 30px; }
+    .chart-card { background: var(--background-card); border-radius: var(--radius-lg); padding: 30px; box-shadow: var(--shadow-light); }
+    .chart-title { font-size: 18px; font-weight: 600; margin-bottom: 20px; }
+    .chart-container { height: 300px; position: relative; }
+
+    .mood-calendar { background: var(--background-card); border-radius: var(--radius-lg); padding: 30px; box-shadow: var(--shadow-light); margin-bottom: 30px; }
+    .calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .calendar-nav {
+      width: 36px; height: 36px; border-radius: var(--radius-full);
+      border: 2px solid var(--border-color); background: var(--background-card);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s ease;
+    }
+    .calendar-nav:hover { border-color: var(--primary-color); background: var(--primary-light); }
+    .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+    .calendar-day-header { text-align: center; font-weight: 600; color: var(--text-secondary); padding: 10px; }
+    .calendar-day {
+      aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+      border-radius: var(--radius-md); cursor: pointer; transition: all 0.3s ease; font-size: 14px;
+    }
+    .calendar-day:hover { background: var(--background-color); }
+    .calendar-day.today { background: var(--primary-color); color: white; font-weight: 600; }
+    .calendar-day.has-mood { position: relative; }
+    .calendar-day.has-mood::after {
+      content: ''; position: absolute; bottom: 4px; width: 6px; height: 6px; border-radius: var(--radius-full);
+    }
+    .calendar-day.mood-happy::after { background: var(--secondary-green); }
+    .calendar-day.mood-sad::after { background: #87CEEB; }
+    .calendar-day.mood-anxious::after { background: var(--primary-color); }
+    .calendar-day.mood-angry::after { background: #FF6B6B; }
+    .calendar-day.mood-neutral::after { background: #D3D3D3; }
+
+    .emotion-report { background: var(--background-card); border-radius: var(--radius-lg); padding: 30px; box-shadow: var(--shadow-light); }
+    .report-title { font-size: 20px; font-weight: 600; margin-bottom: 20px; }
+    .report-section { margin-bottom: 25px; }
+    .report-section h4 { font-size: 16px; margin-bottom: 12px; color: var(--text-secondary); }
+    .report-list { list-style: none; }
+    .report-list li { padding: 8px 0; border-bottom: 1px solid var(--border-color); }
+    .report-list li:last-child { border-bottom: none; }
+
+    .knowledge-container { padding: 40px 20px; }
+    .search-bar { max-width: 600px; margin: 0 auto 40px; position: relative; }
+    .search-input {
+      width: 100%; padding: 15px 50px 15px 20px;
+      border-radius: var(--radius-full); border: 2px solid var(--border-color);
+      font-size: 16px; outline: none; transition: border-color 0.3s ease;
+    }
+    .search-input:focus { border-color: var(--primary-color); }
+    .search-icon { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+
+    .category-tabs { display: flex; gap: 10px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap; }
+    .category-tab {
+      padding: 8px 20px; border-radius: var(--radius-full);
+      border: 2px solid var(--border-color); background: var(--background-card);
+      cursor: pointer; transition: all 0.3s ease;
+    }
+    .category-tab:hover { border-color: var(--primary-color); }
+    .category-tab.active { background: var(--primary-color); color: white; border-color: var(--primary-color); }
+
+    .knowledge-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+    .knowledge-card {
+      background: var(--background-card); border-radius: var(--radius-lg);
+      padding: 25px; box-shadow: var(--shadow-light); cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .knowledge-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-5px); }
+    .knowledge-card-header { display: flex; gap: 12px; margin-bottom: 15px; }
+    .knowledge-icon {
+      width: 48px; height: 48px; border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-purple) 100%);
+      display: flex; align-items: center; justify-content: center; font-size: 20px;
+    }
+    .knowledge-meta { flex: 1; }
+    .knowledge-category { font-size: 12px; color: var(--primary-color); font-weight: 500; }
+    .knowledge-title { font-size: 16px; font-weight: 600; margin-top: 4px; }
+    .knowledge-concept { color: var(--text-secondary); font-size: 14px; margin-bottom: 15px; line-height: 1.6; }
+    .knowledge-tips { background: var(--background-color); border-radius: var(--radius-md); padding: 15px; }
+    .knowledge-tips h4 { font-size: 14px; margin-bottom: 10px; }
+    .knowledge-tips ul { list-style: none; }
+    .knowledge-tips li { font-size: 13px; color: var(--text-secondary); padding: 5px 0; padding-left: 15px; position: relative; }
+    .knowledge-tips li::before { content: '•'; position: absolute; left: 0; color: var(--primary-color); }
+
+    .test-container { padding: 40px 20px; }
+    .test-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+    .test-card {
+      background: var(--background-card); border-radius: var(--radius-lg);
+      padding: 30px; box-shadow: var(--shadow-light); cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .test-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-5px); }
+    .test-icon {
+      width: 60px; height: 60px; border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-purple) 100%);
+      display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 20px;
+    }
+    .test-title { font-size: 18px; font-weight: 600; margin-bottom: 10px; }
+    .test-description { color: var(--text-secondary); font-size: 14px; margin-bottom: 20px; line-height: 1.6; }
+    .test-meta { display: flex; gap: 15px; font-size: 13px; color: var(--text-muted); }
+    .test-start-btn {
+      margin-top: 20px; width: 100%; padding: 12px;
+      background: var(--primary-color); color: white; border: none;
+      border-radius: var(--radius-md); font-weight: 600; cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .test-start-btn:hover { background: var(--primary-dark); }
+
+    .test-question-container { max-width: 800px; margin: 0 auto; }
+    .question-card { background: var(--background-card); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-light); margin-bottom: 30px; }
+    .question-number { font-size: 14px; color: var(--primary-color); font-weight: 600; margin-bottom: 15px; }
+    .question-text { font-size: 18px; font-weight: 600; margin-bottom: 30px; }
+    .options-list { display: flex; flex-direction: column; gap: 15px; }
+    .option-item {
+      padding: 15px 20px; border-radius: var(--radius-md);
+      border: 2px solid var(--border-color); cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .option-item:hover { border-color: var(--primary-color); background: var(--background-color); }
+    .option-item.selected { border-color: var(--primary-color); background: var(--primary-light); }
+
+    .test-progress { width: 100%; height: 8px; background: var(--border-color); border-radius: var(--radius-full); margin-bottom: 30px; overflow: hidden; }
+    .progress-bar { height: 100%; background: var(--primary-color); border-radius: var(--radius-full); transition: width 0.3s ease; }
+
+    .test-nav { display: flex; justify-content: space-between; align-items: center; }
+    .test-btn { padding: 12px 30px; border-radius: var(--radius-full); border: none; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+    .test-btn-primary { background: var(--primary-color); color: white; }
+    .test-btn-primary:hover { background: var(--primary-dark); }
+    .test-btn-secondary { background: var(--background-card); color: var(--text-secondary); border: 2px solid var(--border-color); }
+    .test-btn-secondary:hover { border-color: var(--primary-color); }
+    .test-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .test-result-container { max-width: 600px; margin: 0 auto; }
+    .result-card { background: var(--background-card); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-light); text-align: center; }
+    .result-icon {
+      width: 100px; height: 100px; border-radius: var(--radius-full);
+      background: linear-gradient(135deg, var(--secondary-green-light) 0%, var(--secondary-green) 100%);
+      display: flex; align-items: center; justify-content: center; font-size: 48px;
+      margin: 0 auto 25px;
+    }
+    .result-score { font-size: 48px; font-weight: 700; color: var(--primary-dark); margin-bottom: 10px; }
+    .result-level { font-size: 20px; font-weight: 600; margin-bottom: 20px; }
+    .result-description { color: var(--text-secondary); line-height: 1.7; margin-bottom: 30px; }
+    .result-suggestions { text-align: left; background: var(--background-color); border-radius: var(--radius-md); padding: 20px; margin-bottom: 30px; }
+    .result-suggestions h4 { margin-bottom: 15px; font-size: 16px; }
+    .result-suggestions ul { list-style: none; }
+    .result-suggestions li { padding: 8px 0; padding-left: 20px; position: relative; }
+    .result-suggestions li::before { content: '✓'; position: absolute; left: 0; color: var(--secondary-green); }
+
+    .diary-container { padding: 40px 20px; }
+    .diary-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+    .diary-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+    .diary-card {
+      background: var(--background-card); border-radius: var(--radius-lg);
+      padding: 25px; box-shadow: var(--shadow-light); cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .diary-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-5px); }
+    .diary-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+    .diary-emotion-tag { padding: 4px 12px; border-radius: var(--radius-full); font-size: 12px; font-weight: 500; }
+    .diary-emotion-tag.happy { background: var(--secondary-green-light); color: #228B22; }
+    .diary-emotion-tag.sad { background: #E0F4FF; color: #1E90FF; }
+    .diary-emotion-tag.anxious { background: var(--primary-light); color: var(--primary-dark); }
+    .diary-emotion-tag.angry { background: #FFE0E0; color: #DC143C; }
+    .diary-emotion-tag.neutral { background: #F0F0F0; color: #666; }
+    .diary-date { font-size: 13px; color: var(--text-muted); }
+    .diary-title { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
+    .diary-content { color: var(--text-secondary); font-size: 14px; line-height: 1.6; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+    .diary-category { margin-top: 15px; font-size: 12px; color: var(--text-muted); }
+
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center;
+      z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+    }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    .modal {
+      background: var(--background-card); border-radius: var(--radius-lg);
+      padding: 30px; max-width: 500px; width: 90%;
+      transform: scale(0.9); transition: transform 0.3s ease;
+    }
+    .modal-overlay.active .modal { transform: scale(1); }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+    .modal-title { font-size: 20px; font-weight: 600; }
+    .modal-close {
+      width: 36px; height: 36px; border-radius: var(--radius-full);
+      border: none; background: var(--background-color); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s ease;
+    }
+    .modal-close:hover { background: var(--border-color); }
+
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 12px; border-radius: var(--radius-md);
+      border: 2px solid var(--border-color); font-size: 14px;
+      outline: none; transition: border-color 0.3s ease;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--primary-color); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-actions { display: flex; gap: 15px; justify-content: flex-end; margin-top: 30px; }
+
+    .relax-section { padding: 40px 20px; }
+    .relax-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+    .relax-card {
+      background: var(--background-card); border-radius: var(--radius-lg);
+      padding: 30px; box-shadow: var(--shadow-light); cursor: pointer;
+      transition: all 0.3s ease; text-align: center;
+    }
+    .relax-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-5px); }
+    .relax-icon {
+      width: 80px; height: 80px; border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, var(--secondary-green-light) 0%, var(--secondary-green) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 36px; margin: 0 auto 20px;
+    }
+    .relax-title { font-size: 18px; font-weight: 600; margin-bottom: 10px; }
+    .relax-description { color: var(--text-secondary); font-size: 14px; }
+
+    .breathing-container { max-width: 500px; margin: 0 auto; text-align: center; }
+    .breathing-circle {
+      width: 200px; height: 200px; border-radius: var(--radius-full);
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-purple) 100%);
+      margin: 40px auto; display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 24px; font-weight: 600;
+      transition: all 4s ease-in-out;
+    }
+    .breathing-circle.inhale { transform: scale(1.3); }
+    .breathing-circle.hold { transform: scale(1.3); }
+    .breathing-circle.exhale { transform: scale(1); }
+    .breathing-instruction { font-size: 20px; font-weight: 600; margin-bottom: 30px; }
+    .breathing-controls { display: flex; gap: 20px; justify-content: center; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero-title { font-size: 32px; }
+      .hero-subtitle { font-size: 16px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .chat-container { flex-direction: column; }
+      .chat-sidebar { width: 100%; height: 200px; border-right: none; border-bottom: 1px solid var(--border-color); }
+      .message { max-width: 90%; }
+      .charts-grid { grid-template-columns: 1fr; }
+      .knowledge-grid { grid-template-columns: 1fr; }
+      .test-list { grid-template-columns: 1fr; }
+      .diary-list { grid-template-columns: 1fr; }
+      .relax-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0 15px; }
+      header { padding: 15px 0; }
+      .logo { font-size: 20px; }
+      .logo-icon { width: 32px; height: 32px; font-size: 16px; }
+      .hero-section { padding: 60px 0; }
+      .hero-title { font-size: 28px; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      .feature-card { padding: 30px 20px; }
+      .feature-icon { width: 60px; height: 60px; font-size: 28px; }
+      .chat-input-area { padding: 15px; }
+      .question-card { padding: 25px; }
+      .modal { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <div class="logo" onclick="showPage('home')">
+        <div class="logo-icon">🌳</div>
+        <span>心灵树洞</span>
+      </div>
+      <div class="nav-links">
+        <a onclick="showPage('home')" class="active" id="nav-home">首页</a>
+        <a onclick="showPage('chat')" id="nav-chat">对话陪伴</a>
+        <a onclick="showPage('emotion')" id="nav-emotion">情绪分析</a>
+        <a onclick="showPage('knowledge')" id="nav-knowledge">心理知识</a>
+        <a onclick="showPage('test')" id="nav-test">心理测试</a>
+        <a onclick="showPage('diary')" id="nav-diary">情绪日记</a>
+      </div>
+      <div class="user-menu">
+        <button class="btn btn-outline">登录</button>
+        <div class="user-avatar">👤</div>
+      </div>
+    </nav>
+  </header>
+
+  <div id="page-home" class="page-container" style="display: block;">
+    <section class="hero-section">
+      <div class="container">
+        <h1 class="hero-title">心灵树洞</h1>
+        <p class="hero-subtitle">为大学生提供7×24小时的情绪倾诉陪伴与成长支持💝</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="showPage('chat')">开始对话</button>
+          <button class="btn btn-secondary">了解更多</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="features-section">
+      <div class="container">
+        <h2 class="section-title">核心功能</h2>
+        <p class="section-subtitle">专注于大学生心理健康，提供专业温暖的支持</p>
+        <div class="features-grid">
+          <div class="feature-card" onclick="showPage('chat')">
+            <div class="feature-icon">💬</div>
+            <h3 class="feature-title">对话陪伴</h3>
+            <p class="feature-description">安全私密的情绪宣泄空间，通过共情倾听和引导性回应帮助你梳理情绪，支持多轮对话上下文管理</p>
+          </div>
+          <div class="feature-card" onclick="showPage('chat')">
+            <div class="feature-icon">🧠</div>
+            <h3 class="feature-title">CBT引导</h3>
+            <p class="feature-description">基于认知行为疗法提供结构化心理引导，帮助识别和改变负面思维模式，包含标准化心理量表评估</p>
+          </div>
+          <div class="feature-card" onclick="showPage('emotion')">
+            <div class="feature-icon">📊</div>
+            <h3 class="feature-title">情绪追踪</h3>
+            <p class="feature-description">记录情绪状态，生成周期性分析报告，帮助了解自身情绪变化趋势，包含情绪趋势图表和心情日历</p>
+          </div>
+          <div class="feature-card" onclick="showPage('diary')">
+            <div class="feature-icon">📝</div>
+            <h3 class="feature-title">情绪日记</h3>
+            <p class="feature-description">基于对话内容自动生成情绪日记，减轻记录负担，支持日记分类管理和搜索功能</p>
+          </div>
+          <div class="feature-card" onclick="showPage('knowledge')">
+            <div class="feature-icon">📚</div>
+            <h3 class="feature-title">心理知识</h3>
+            <p class="feature-description">通过RAG知识库检索提供科学易懂的心理学知识，包含知识卡片展示和话题关键词检索</p>
+          </div>
+          <div class="feature-card" onclick="showPage('test')">
+            <div class="feature-icon">🔍</div>
+            <h3 class="feature-title">心理测试</h3>
+            <p class="feature-description">提供标准化心理量表评估，包括焦虑自评量表SAS、抑郁自评量表SDS等</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <section class="features-section">
+      <div class="container">
+        <h2 class="section-title">放松练习</h2>
+        <p class="section-subtitle">通过简单的练习帮助你放松身心</p>
+        <div class="relax-grid">
+          <div class="relax-card" onclick="showPage('breathing')">
+            <div class="relax-icon">🌬️</div>
+            <h3 class="relax-title">呼吸练习</h3>
+            <p class="relax-description">4-7-8呼吸法，帮助快速放松身心</p>
+          </div>
+          <div class="relax-card">
+            <div class="relax-icon">🧘</div>
+            <h3 class="relax-title">正念冥想</h3>
+            <p class="relax-description">引导式冥想练习，提升专注力</p>
+          </div>
+          <div class="relax-card">
+            <div class="relax-icon">🎵</div>
+            <h3 class="relax-title">白噪音</h3>
+            <p class="relax-description">多种自然声音，营造舒适环境</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>关于我们</h4>
+            <p style="color: rgba(255,255,255,0.7); font-size: 14px;">心灵树洞是专注于大学生心理健康的智能陪伴平台，为18-25岁在校大学生提供专业、温暖、有效的心理健康支持。</p>
+          </div>
+          <div class="footer-section">
+            <h4>快速链接</h4>
+            <ul class="footer-links">
+              <li><a onclick="showPage('home')">首页</a></li>
+              <li><a onclick="showPage('chat')">对话陪伴</a></li>
+              <li><a onclick="showPage('emotion')">情绪分析</a></li>
+              <li><a onclick="showPage('knowledge')">心理知识</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>帮助与支持</h4>
+            <ul class="footer-links">
+              <li><a href="#">使用指南</a></li>
+              <li><a href="#">常见问题</a></li>
+              <li><a href="#">联系我们</a></li>
+              <li><a href="#">心理援助热线</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>法律条款</h4>
+            <ul class="footer-links">
+              <li><a href="#">隐私政策</a></li>
+              <li><a href="#">服务条款</a></li>
+              <li><a href="#">免责声明</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 心灵树洞. All rights reserved. | 全国24小时心理援助热线：400-161-9995</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div id="page-chat" class="page-container" style="display: none;">
+    <div class="chat-container">
+      <aside class="chat-sidebar">
+        <div class="sidebar-header">
+          <h3 class="sidebar-title">对话历史</h3>
+          <button class="new-chat-btn">+ 新对话</button>
+        </div>
+        <div class="conversation-list">
+          <div class="conversation-item active">
+            <div class="conversation-preview">
+              <div class="conversation-avatar">💬</div>
+              <div class="conversation-info">
+                <div class="conversation-title">今天的心情</div>
+                <div class="conversation-last-message">我最近感觉压力很大...</div>
+              </div>
+              <div class="conversation-time">刚刚</div>
+            </div>
+          </div>
+          <div class="conversation-item">
+            <div class="conversation-preview">
+              <div class="conversation-avatar">💭</div>
+              <div class="conversation-info">
+                <div class="conversation-title">考试焦虑</div>
+                <div class="conversation-last-message">马上要期末考试了...</div>
+              </div>
+              <div class="conversation-time">今天</div>
+            </div>
+          </div>
+          <div class="conversation-item">
+            <div class="conversation-preview">
+              <div class="conversation-avatar">❤️</div>
+              <div class="conversation-info">
+                <div class="conversation-title">人际关系</div>
+                <div class="conversation-last-message">和室友闹矛盾了...</div>
+              </div>
+              <div class="conversation-time">昨天</div>
+            </div>
+          </div>
+          <div class="conversation-item">
+            <div class="conversation-preview">
+              <div class="conversation-avatar">🎓</div>
+              <div class="conversation-info">
+                <div class="conversation-title">学业压力</div>
+                <div class="conversation-last-message">专业课太难了...</div>
+              </div>
+              <div class="conversation-time">3天前</div>
+            </div>
+          </div>
+          <div class="conversation-item">
+            <div class="conversation-preview">
+              <div class="conversation-avatar">🌱</div>
+              <div class="conversation-info">
+                <div class="conversation-title">自我介绍</div>
+                <div class="conversation-last-message">你好，我是心灵树洞...</div>
+              </div>
+              <div class="conversation-time">1周前</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="chat-main">
+        <div class="chat-header">
+          <div>
+            <h3 class="chat-title">今天的心情</h3>
+            <p style="font-size: 13px; color: #999;">开始于 2026-07-17 10:30</p>
+          </div>
+          <div class="chat-actions">
+            <button style="width: 36px; height: 36px; border-radius: 50%; border: 2px solid #FFE4E9; background: white; cursor: pointer;" title="重新开始">🔄</button>
+            <button style="width: 36px; height: 36px; border-radius: 50%; border: 2px solid #FFE4E9; background: white; cursor: pointer;" title="更多选项">⋮</button>
+          </div>
+        </div>
+
+        <div id="chat-messages" class="chat-messages">
+          <div class="message assistant">
+            <div class="message-content">你好呀！我是心灵树洞，很高兴认识你🌱
+
+我是一个温暖、包容、耐心、真诚的朋友，随时在这里听你倾诉。无论是学业压力、人际关系、情感问题还是其他困扰，都可以和我说说。
+
+我不是专业心理咨询师，不能提供医学诊断或治疗建议，但我会尽我所能陪伴你、支持你。
+
+现在，你想聊些什么呢？💝</div>
+            <div class="message-time">10:30</div>
+          </div>
+          <div class="message user">
+            <div class="message-content">我最近感觉压力很大，马上要期末考试了，还有很多作业没完成，感觉自己要崩溃了</div>
+            <div class="message-time">10:32</div>
+          </div>
+          <div class="message assistant">
+            <div class="message-content">我完全理解你的感受，期末考试前的压力确实会让人感到喘不过气来💝
+
+让我们一起梳理一下，看看能不能找到一些缓解的方法：
+
+1. 📝 先列一个清单，把需要完成的任务按优先级排序
+2. ⏰ 把大任务分解成小步骤，每完成一个就给自己一个小奖励
+3. 🌬️ 每学习45-60分钟，就站起来活动一下，做个深呼吸
+4. 💤 保证充足的睡眠，大脑需要休息才能高效学习
+
+你觉得这些方法怎么样？或者你有其他的想法想和我说说？✨</div>
+            <div class="message-time">10:33</div>
+          </div>
+          <div class="message user">
+            <div class="message-content">谢谢你的建议，我觉得很有帮助。但是我还是很焦虑，担心自己考不好</div>
+            <div class="message-time">10:35</div>
+          </div>
+        </div>
+
+        <div class="chat-input-area">
+          <div class="input-container">
+            <textarea id="chat-input" class="chat-input" placeholder="输入你想说的话..." rows="1"></textarea>
+            <button id="send-btn" class="send-btn" type="button">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 2L11 13"></path>
+                <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div id="page-emotion" class="page-container" style="display: none;">
+    <main class="emotion-analysis-container">
+      <div class="container">
+        <div class="time-range-selector">
+          <button class="time-btn active">本周</button>
+          <button class="time-btn">本月</button>
+          <button class="time-btn">近3个月</button>
+          <button class="time-btn">自定义</button>
+        </div>
+
+        <div class="charts-grid">
+          <div class="chart-card">
+            <h3 class="chart-title">情绪趋势</h3>
+            <div id="trend-chart" class="chart-container"></div>
+          </div>
+          <div class="chart-card">
+            <h3 class="chart-title">情绪雷达图</h3>
+            <div id="radar-chart" class="chart-container"></div>
+          </div>
+        </div>
+
+        <div class="mood-calendar">
+          <div class="calendar-header">
+            <button class="calendar-nav">‹</button>
+            <h3 style="font-size: 18px; font-weight: 600;">2026年7月</h3>
+            <button class="calendar-nav">›</button>
+          </div>
+          <div id="emotion-calendar-grid" class="calendar-grid"></div>
+        </div>
+
+        <div class="emotion-report">
+          <h3 class="report-title">📋 情绪分析报告</h3>
+          <div class="report-section">
+            <h4>📊 总体情况</h4>
+            <p style="color: #666; line-height: 1.7;">本周共记录 <strong style="color: #FF8BA3;">15</strong> 条情绪记录，平均情绪指数为 <strong style="color: #FF8BA3;">6.2</strong>。整体情绪状态处于中等水平，建议适当进行放松练习。</p>
+          </div>
+          <div class="report-section">
+            <h4>🔑 关键发现</h4>
+            <ul class="report-list">
+              <li><strong>焦虑情绪</strong>在周三、周四达到高峰，可能与期末考试临近有关</li>
+              <li><strong>压力指数</strong>整体偏高，建议合理安排学习计划，避免过度劳累</li>
+              <li><strong>积极情绪</strong>在周末有所回升，说明休息和娱乐对情绪调节有帮助</li>
+              <li><strong>情绪波动较大</strong>，建议尝试情绪日记记录，更好地了解情绪变化规律</li>
+            </ul>
+          </div>
+          <div class="report-section">
+            <h4>💡 成长建议</h4>
+            <ul class="report-list">
+              <li>🎯 每天安排30分钟的放松时间，可以尝试呼吸练习或正念冥想</li>
+              <li>📝 坚持写情绪日记，记录每天的情绪变化和触发事件</li>
+              <li>👥 适当与朋友或家人交流，不要独自承担所有压力</li>
+              <li>💤 保证每天7-8小时的睡眠，这对情绪稳定非常重要</li>
+              <li>🌳 每周安排一次户外活动，接触大自然有助于缓解压力</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="page-knowledge" class="page-container" style="display: none;">
+    <main class="knowledge-container">
+      <div class="container">
+        <div class="search-bar">
+          <input type="text" class="search-input" placeholder="搜索心理知识...">
+          <span class="search-icon">🔍</span>
+        </div>
+        <div class="category-tabs">
+          <button class="category-tab active">全部</button>
+          <button class="category-tab">焦虑</button>
+          <button class="category-tab">压力管理</button>
+          <button class="category-tab">人际关系</button>
+          <button class="category-tab">情绪管理</button>
+          <button class="category-tab">自我成长</button>
+        </div>
+        <div class="knowledge-grid">
+          <div class="knowledge-card">
+            <div class="knowledge-card-header">
+              <div class="knowledge-icon">📌</div>
+              <div class="knowledge-meta">
+                <div class="knowledge-category">焦虑</div>
+                <div class="knowledge-title">认知行为疗法</div>
+              </div>
+            </div>
+            <div class="knowledge-concept">认知行为疗法（CBT）是一种通过改变思维和行为来改善情绪的心理治疗方法。它认为我们的情绪不是由事件本身引起的，而是由我们对事件的看法和解释引起的。</div>
+            <div class="knowledge-tips">
+              <h4>💡 实用技巧</h4>
+              <ul>
+                <li>识别自动负面思维</li>
+                <li>挑战不合理信念</li>
+                <li>用理性思维替代</li>
+                <li>通过行为实验验证</li>
+              </ul>
+            </div>
+          </div>
+          <div class="knowledge-card">
+            <div class="knowledge-card-header">
+              <div class="knowledge-icon">🎯</div>
+              <div class="knowledge-meta">
+                <div class="knowledge-category">压力管理</div>
+                <div class="knowledge-title">时间管理四象限</div>
+              </div>
+            </div>
+            <div class="knowledge-concept">时间管理四象限是一种帮助我们合理分配时间的方法，将任务分为重要紧急、重要不紧急、紧急不重要、不紧急不重要四个象限，优先处理重要不紧急的任务。</div>
+            <div class="knowledge-tips">
+              <h4>💡 实用技巧</h4>
+              <ul>
+                <li>每天花10分钟规划任务</li>
+                <li>优先处理重要不紧急的任务</li>
+                <li>学会拒绝不重要的任务</li>
+                <li>定期复盘时间使用情况</li>
+              </ul>
+            </div>
+          </div>
+          <div class="knowledge-card">
+            <div class="knowledge-card-header">
+              <div class="knowledge-icon">❤️</div>
+              <div class="knowledge-meta">
+                <div class="knowledge-category">人际关系</div>
+                <div class="knowledge-title">有效沟通技巧</div>
+              </div>
+            </div>
+            <div class="knowledge-concept">有效沟通不仅是表达自己，更是倾听他人。运用"我"语句表达感受，积极倾听对方的观点，有助于建立健康的人际关系。</div>
+            <div class="knowledge-tips">
+              <h4>💡 实用技巧</h4>
+              <ul>
+                <li>使用"我"语句表达感受</li>
+                <li>积极倾听，不打断对方</li>
+                <li>保持眼神交流和开放姿态</li>
+                <li>给予对方反馈确认理解</li>
+              </ul>
+            </div>
+          </div>
+          <div class="knowledge-card">
+            <div class="knowledge-card-header">
+              <div class="knowledge-icon">🌊</div>
+              <div class="knowledge-meta">
+                <div class="knowledge-category">情绪管理</div>
+                <div class="knowledge-title">正念冥想</div>
+              </div>
+            </div>
+            <div class="knowledge-concept">正念冥想是一种通过关注当下、接纳情绪来达到内心平静的练习方法。它帮助我们不被情绪所控制，而是以旁观者的角度观察情绪的变化。</div>
+            <div class="knowledge-tips">
+              <h4>💡 实用技巧</h4>
+              <ul>
+                <li>每天练习10-15分钟</li>
+                <li>专注于呼吸或身体感受</li>
+                <li>当思绪飘走时温柔拉回</li>
+                <li>不评判自己的任何想法</li>
+              </ul>
+            </div>
+          </div>
+          <div class="knowledge-card">
+            <div class="knowledge-card-header">
+              <div class="knowledge-icon">🌱</div>
+              <div class="knowledge-meta">
+                <div class="knowledge-category">自我成长</div>
+                <div class="knowledge-title">成长型思维</div>
+              </div>
+            </div>
+            <div class="knowledge-concept">成长型思维认为能力是可以通过努力和学习来发展的，而不是固定不变的。拥有成长型思维的人更愿意接受挑战，从失败中学习，持续进步。</div>
+            <div class="knowledge-tips">
+              <h4>💡 实用技巧</h4>
+              <ul>
+                <li>把挑战看作成长的机会</li>
+                <li>关注努力的过程而非结果</li>
+                <li>从批评中寻找改进的方向</li>
+                <li>用"还没"代替"不能"</li>
+              </ul>
+            </div>
+          </div>
+          <div class="knowledge-card">
+            <div class="knowledge-card-header">
+              <div class="knowledge-icon">😴</div>
+              <div class="knowledge-meta">
+                <div class="knowledge-category">压力管理</div>
+                <div class="knowledge-title">睡眠与心理健康</div>
+              </div>
+            </div>
+            <div class="knowledge-concept">良好的睡眠对心理健康至关重要。睡眠不足会影响情绪调节能力、认知功能和免疫系统。建立规律的睡眠习惯是保持心理健康的基础。</div>
+            <div class="knowledge-tips">
+              <h4>💡 实用技巧</h4>
+              <ul>
+                <li>保持规律的作息时间</li>
+                <li>睡前1小时远离电子设备</li>
+                <li>建立放松的睡前仪式</li>
+                <li>保持卧室黑暗、安静、凉爽</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="page-test" class="page-container" style="display: none;">
+    <main class="test-container" id="test-container">
+      <div class="container">
+        <h2 class="section-title">心理测试</h2>
+        <p class="section-subtitle">通过科学的心理量表，了解自己的心理状态</p>
+        <div class="test-list">
+          <div class="test-card">
+            <div class="test-icon">📊</div>
+            <h3 class="test-title">焦虑自评量表(SAS)</h3>
+            <p class="test-description">用于评估焦虑症状的严重程度，包含20个题目，约5分钟完成。</p>
+            <div class="test-meta">
+              <span>📝 20题</span>
+              <span>⏱️ 5分钟</span>
+            </div>
+            <button class="test-start-btn" onclick="startTest('sas')">开始测试</button>
+          </div>
+          <div class="test-card">
+            <div class="test-icon">🌧️</div>
+            <h3 class="test-title">抑郁自评量表(SDS)</h3>
+            <p class="test-description">用于评估抑郁症状的严重程度，包含20个题目，约5分钟完成。</p>
+            <div class="test-meta">
+              <span>📝 20题</span>
+              <span>⏱️ 5分钟</span>
+            </div>
+            <button class="test-start-btn" onclick="startTest('sds')">开始测试</button>
+          </div>
+          <div class="test-card">
+            <div class="test-icon">⚡</div>
+            <h3 class="test-title">压力水平测试</h3>
+            <p class="test-description">评估当前的压力水平和应对能力，包含15个题目，约3分钟完成。</p>
+            <div class="test-meta">
+              <span>📝 15题</span>
+              <span>⏱️ 3分钟</span>
+            </div>
+            <button class="test-start-btn" onclick="startTest('stress')">开始测试</button>
+          </div>
+          <div class="test-card">
+            <div class="test-icon">😴</div>
+            <h3 class="test-title">睡眠质量测试</h3>
+            <p class="test-description">评估睡眠质量和睡眠障碍情况，包含10个题目，约2分钟完成。</p>
+            <div class="test-meta">
+              <span>📝 10题</span>
+              <span>⏱️ 2分钟</span>
+            </div>
+            <button class="test-start-btn" onclick="startTest('sleep')">开始测试</button>
+          </div>
+          <div class="test-card">
+            <div class="test-icon">👤</div>
+            <h3 class="test-title">性格类型测试</h3>
+            <p class="test-description">基于MBTI理论的性格类型测试，帮助了解自己的性格特点。</p>
+            <div class="test-meta">
+              <span>📝 40题</span>
+              <span>⏱️ 10分钟</span>
+            </div>
+            <button class="test-start-btn" onclick="startTest('personality')">开始测试</button>
+          </div>
+          <div class="test-card">
+            <div class="test-icon">⭐</div>
+            <h3 class="test-title">自信心测试</h3>
+            <p class="test-description">评估自信心水平和自我价值感，包含15个题目，约3分钟完成。</p>
+            <div class="test-meta">
+              <span>📝 15题</span>
+              <span>⏱️ 3分钟</span>
+            </div>
+            <button class="test-start-btn" onclick="startTest('self-esteem')">开始测试</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div id="question-container"></div>
+    <div id="result-container"></div>
+  </div>
+
+  <div id="page-diary" class="page-container" style="display: none;">
+    <main class="diary-container">
+      <div class="container">
+        <div class="diary-header">
+          <div>
+            <h2 class="section-title">情绪日记</h2>
+            <p style="color: #666;">记录心情，见证成长</p>
+          </div>
+          <button onclick="showAddDiaryModal()" class="btn btn-primary">+ 写日记</button>
+        </div>
+        <div class="category-tabs" style="margin-bottom: 30px;">
+          <button class="category-tab active">全部</button>
+          <button class="category-tab">开心</button>
+          <button class="category-tab">难过</button>
+          <button class="category-tab">焦虑</button>
+          <button class="category-tab">生气</button>
+          <button class="category-tab">平静</button>
+        </div>
+        <div class="diary-list">
+          <div class="diary-card" onclick="showDiaryDetail(this)">
+            <div class="diary-card-header">
+              <span class="diary-emotion-tag happy">😊 开心</span>
+              <span class="diary-date">2026-07-17</span>
+            </div>
+            <h3 class="diary-title">今天收到了offer！</h3>
+            <p class="diary-content">今天收到了心仪公司的实习offer，真的太开心了！从投递简历到面试，经历了很多波折，终于有了回报。感谢这段时间努力的自己，也感谢朋友们的鼓励和支持。接下来要好好准备实习，争取学到更多东西！</p>
+            <div class="diary-category">💼 日常生活</div>
+          </div>
+          <div class="diary-card" onclick="showDiaryDetail(this)">
+            <div class="diary-card-header">
+              <span class="diary-emotion-tag anxious">😰 焦虑</span>
+              <span class="diary-date">2026-07-16</span>
+            </div>
+            <h3 class="diary-title">期末复习压力好大</h3>
+            <p class="diary-content">还有两周就要期末考试了，但是感觉很多东西都还没复习完。高数、线代、专业课...每一门都很难。晚上睡不着，白天学不进去，这种感觉太难受了。真的很担心自己考不好，对不起父母的期望。</p>
+            <div class="diary-category">📚 学业压力</div>
+          </div>
+          <div class="diary-card" onclick="showDiaryDetail(this)">
+            <div class="diary-card-header">
+              <span class="diary-emotion-tag sad">😔 难过</span>
+              <span class="diary-date">2026-07-15</span>
+            </div>
+            <h3 class="diary-title">和室友吵架了</h3>
+            <p class="diary-content">今天和室友因为一点小事吵架了，其实也不是什么大问题，但当时就是控制不住情绪。现在冷静下来想想，觉得很后悔。我们在一起住了两年，一直相处得很好，不应该因为这点小事影响感情。明天找个机会好好聊聊吧。</p>
+            <div class="diary-category">👥 人际关系</div>
+          </div>
+          <div class="diary-card" onclick="showDiaryDetail(this)">
+            <div class="diary-card-header">
+              <span class="diary-emotion-tag neutral">😐 平静</span>
+              <span class="diary-date">2026-07-14</span>
+            </div>
+            <h3 class="diary-title">平淡的一天</h3>
+            <p class="diary-content">今天过得很平淡，上课、自习、吃饭、睡觉，和往常一样。虽然没有什么特别的事情发生，但这种平静的感觉也挺好的。有时候不需要太多波澜，平平淡淡也是一种幸福。</p>
+            <div class="diary-category">📝 情绪记录</div>
+          </div>
+          <div class="diary-card" onclick="showDiaryDetail(this)">
+            <div class="diary-card-header">
+              <span class="diary-emotion-tag happy">😊 开心</span>
+              <span class="diary-date">2026-07-13</span>
+            </div>
+            <h3 class="diary-title">和朋友们去野餐</h3>
+            <p class="diary-content">今天天气很好，和几个好朋友一起去公园野餐了。我们带了很多好吃的，聊了很多开心的话题。看着蓝天白云，吃着美食，和朋友们在一起，真的很幸福。这种简单的快乐，希望能一直保持下去。</p>
+            <div class="diary-category">💼 日常生活</div>
+          </div>
+          <div class="diary-card" onclick="showDiaryDetail(this)">
+            <div class="diary-card-header">
+              <span class="diary-emotion-tag angry">😠 生气</span>
+              <span class="diary-date">2026-07-12</span>
+            </div>
+            <h3 class="diary-title">被放鸽子了</h3>
+            <p class="diary-content">今天本来约好了和朋友一起去看电影，我提前半小时就到了电影院，结果朋友说临时有事来不了了。我真的很生气，明明昨天还确认过的，为什么不早点告诉我？白白浪费了我一下午的时间，现在心情特别差。</p>
+            <div class="diary-category">👥 人际关系</div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="page-breathing" class="page-container" style="display: none;">
+    <main class="relax-section">
+      <div class="container">
+        <h2 class="section-title">4-7-8呼吸练习</h2>
+        <p class="section-subtitle">通过深呼吸帮助你放松身心，缓解焦虑和压力</p>
+        <div class="breathing-container">
+          <div id="breathing-circle" class="breathing-circle">🌬️</div>
+          <div id="breathing-instruction" class="breathing-instruction">准备开始</div>
+          <div class="breathing-controls">
+            <button id="start-breathing" class="btn btn-primary">开始练习</button>
+            <button id="stop-breathing" class="btn btn-secondary" style="display: none;">停止练习</button>
+          </div>
+          <div style="margin-top: 40px; text-align: left; max-width: 500px; margin-left: auto; margin-right: auto;">
+            <h4 style="font-size: 18px; margin-bottom: 15px;">💡 什么是4-7-8呼吸法？</h4>
+            <p style="color: #666; line-height: 1.7; margin-bottom: 20px;">4-7-8呼吸法是一种简单有效的放松技巧，由哈佛医学院的安德鲁·韦尔博士推广。它通过特定的呼吸节奏帮助激活身体的放松反应。</p>
+            <h4 style="font-size: 18px; margin-bottom: 15px;">📋 练习步骤</h4>
+            <ul style="color: #666; line-height: 1.7;">
+              <li><strong>吸气</strong>（4秒）：用鼻子深吸气，感受腹部像气球一样鼓起</li>
+              <li><strong>屏息</strong>（7秒）：屏住呼吸，保持感受</li>
+              <li><strong>呼气</strong>（8秒）：用嘴巴慢慢呼气，发出"嘶"的声音</li>
+            </ul>
+            <p style="color: #666; line-height: 1.7; margin-top: 20px;">建议每天练习2-3次，每次4-6轮。坚持练习可以帮助你在感到焦虑或紧张时快速恢复平静。</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll('.page-container').forEach(el => el.style.display = 'none');
+      document.getElementById('page-' + pageId).style.display = 'block';
+      
+      document.querySelectorAll('.nav-links a').forEach(el => el.classList.remove('active'));
+      const navLink = document.getElementById('nav-' + pageId);
+      if (navLink) navLink.classList.add('active');
+
+      if (pageId === 'emotion') {
+        initEmotionCalendar();
+        initCharts();
+      }
+    }
+
+    const mockResponses = [
+      '我很抱歉听到你这么说，你愿意和我分享更多吗？🌱',
+      '听起来你最近遇到了一些挑战，我在这里陪伴你💝',
+      '谢谢你愿意信任我，说出这些感受。你并不孤单✨',
+      '我能感受到你现在的心情，让我们一起慢慢梳理🌿',
+      '你的感受是真实且重要的，不要害怕表达它们💪',
+      '有时候倾诉本身就是一种力量，你已经做得很棒了🌈',
+      '我理解这种感觉，很多人都会有类似的经历🌻',
+      '让我们一起看看有没有什么办法可以帮助你🌼'
+    ];
+
+    function addMessage(content, role) {
+      const messagesContainer = document.getElementById('chat-messages');
+      if (!messagesContainer) return;
+      const messageDiv = document.createElement('div');
+      messageDiv.className = 'message ' + role;
+      messageDiv.innerHTML = `
+        <div class="message-content">${content}</div>
+        <div class="message-time">${new Date().toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })}</div>
+      `;
+      messagesContainer.appendChild(messageDiv);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    function showTypingIndicator() {
+      const messagesContainer = document.getElementById('chat-messages');
+      if (!messagesContainer) return null;
+      const typingDiv = document.createElement('div');
+      typingDiv.className = 'typing-indicator';
+      typingDiv.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+      messagesContainer.appendChild(typingDiv);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      return typingDiv;
+    }
+
+    function simulateTyping(responseText) {
+      const typingIndicator = showTypingIndicator();
+      if (!typingIndicator) return;
+      let index = 0;
+      const messageDiv = document.createElement('div');
+      messageDiv.className = 'message assistant';
+      messageDiv.innerHTML = '<div class="message-content"></div><div class="message-time"></div>';
+      
+      const interval = setInterval(() => {
+        if (index < responseText.length) {
+          messageDiv.querySelector('.message-content').textContent += responseText[index];
+          index++;
+          const container = document.getElementById('chat-messages');
+          if (container) container.scrollTop = container.scrollHeight;
+        } else {
+          clearInterval(interval);
+          typingIndicator.remove();
+          messageDiv.querySelector('.message-time').textContent = new Date().toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
+          const container = document.getElementById('chat-messages');
+          if (container) container.appendChild(messageDiv);
+          container.scrollTop = container.scrollHeight;
+        }
+      }, 50);
+    }
+
+    document.getElementById('send-btn')?.addEventListener('click', function() {
+      const input = document.getElementById('chat-input');
+      const content = input.value.trim();
+      if (!content) return;
+      addMessage(content, 'user');
+      input.value = '';
+      this.disabled = true;
+      setTimeout(() => {
+        const response = mockResponses[Math.floor(Math.random() * mockResponses.length)];
+        simulateTyping(response);
+        this.disabled = false;
+      }, 1000);
+    });
+
+    document.getElementById('chat-input')?.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        document.getElementById('send-btn').click();
+      }
+    });
+
+    function initEmotionCalendar() {
+      const calendarGrid = document.getElementById('emotion-calendar-grid');
+      if (!calendarGrid) return;
+      calendarGrid.innerHTML = '';
+
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = today.getMonth();
+      const firstDay = new Date(year, month, 1);
+      const lastDay = new Date(year, month + 1, 0);
+      const daysInMonth = lastDay.getDate();
+      const startDay = firstDay.getDay();
+      const moodTypes = ['happy', 'sad', 'anxious', 'angry', 'neutral'];
+      const days = ['日', '一', '二', '三', '四', '五', '六'];
+
+      days.forEach(day => {
+        const header = document.createElement('div');
+        header.className = 'calendar-day-header';
+        header.textContent = day;
+        calendarGrid.appendChild(header);
+      });
+
+      for (let i = 0; i < startDay; i++) {
+        calendarGrid.appendChild(document.createElement('div'));
+      }
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dayCell = document.createElement('div');
+        dayCell.className = 'calendar-day';
+        dayCell.textContent = day;
+
+        if (day === today.getDate()) {
+          dayCell.classList.add('today');
+        }
+
+        if (Math.random() > 0.3) {
+          const mood = moodTypes[Math.floor(Math.random() * moodTypes.length)];
+          dayCell.classList.add('has-mood', 'mood-' + mood);
+        }
+
+        dayCell.addEventListener('click', function() {
+          showMoodDetail(day);
+        });
+
+        calendarGrid.appendChild(dayCell);
+      }
+    }
+
+    function showMoodDetail(day) {
+      const modal = document.createElement('div');
+      modal.className = 'modal-overlay active';
+      modal.innerHTML = `
+        <div class="modal">
+          <div class="modal-header">
+            <h3 class="modal-title">${new Date().getMonth() + 1}月${day}日 心情记录</h3>
+            <button class="modal-close" onclick="this.closest('.modal-overlay').remove()">&times;</button>
+          </div>
+          <div class="form-group">
+            <label>今日心情</label>
+            <div style="display: flex; gap: 15px;">
+              <button style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid #FFE4E9; background: #C1FFC1; font-size: 24px;" class="mood-btn" onclick="selectMood(this)">😊</button>
+              <button style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid #FFE4E9; background: #E0F4FF; font-size: 24px;" class="mood-btn" onclick="selectMood(this)">😔</button>
+              <button style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid #FFE4E9; background: #FFD4DE; font-size: 24px;" class="mood-btn" onclick="selectMood(this)">😰</button>
+              <button style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid #FFE4E9; background: #FFE0E0; font-size: 24px;" class="mood-btn" onclick="selectMood(this)">😠</button>
+              <button style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid #FFE4E9; background: #F0F0F0; font-size: 24px;" class="mood-btn" onclick="selectMood(this)">😐</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>心情记录</label>
+            <textarea placeholder="记录一下今天的心情..."></textarea>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-secondary" onclick="this.closest('.modal-overlay').remove()">取消</button>
+            <button class="btn btn-primary" onclick="this.closest('.modal-overlay').remove()">保存</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+    }
+
+    window.selectMood = function(btn) {
+      document.querySelectorAll('.mood-btn').forEach(b => b.style.borderColor = '#FFE4E9');
+      btn.style.borderColor = '#FFB7C5';
+    };
+
+    let answers = {};
+
+    function startTest(testId) {
+      const questions = [
+        { id: 1, text: '最近一周，你是否经常感到紧张或焦虑？', options: ['没有或很少', '偶尔', '经常', '总是'] },
+        { id: 2, text: '你是否觉得难以放松或休息？', options: ['没有或很少', '偶尔', '经常', '总是'] },
+        { id: 3, text: '你是否容易感到疲劳或精力不足？', options: ['没有或很少', '偶尔', '经常', '总是'] },
+        { id: 4, text: '你是否经常担心未来的事情？', options: ['没有或很少', '偶尔', '经常', '总是'] },
+        { id: 5, text: '你是否觉得自己比平时更容易生气或烦躁？', options: ['没有或很少', '偶尔', '经常', '总是'] }
+      ];
+
+      let currentQuestion = 0;
+      answers = {};
+
+      function renderQuestion() {
+        const question = questions[currentQuestion];
+        const progress = ((currentQuestion + 1) / questions.length) * 100;
+        const container = document.getElementById('test-container');
+        
+        container.innerHTML = `
+          <div class="container">
+            <div class="test-progress">
+              <div class="progress-bar" style="width: ${progress}%"></div>
+            </div>
+            <div class="question-card">
+              <div class="question-number">第 ${currentQuestion + 1} / ${questions.length} 题</div>
+              <div class="question-text">${question.text}</div>
+              <div class="options-list">
+                ${question.options.map((option, idx) => `
+                  <div class="option-item" onclick="selectOption(${idx})" id="option-${idx}">${option}</div>
+                `).join('')}
+              </div>
+            </div>
+            <div class="test-nav">
+              <button class="test-btn test-btn-secondary" onclick="prevQuestion()" ${currentQuestion === 0 ? 'disabled' : ''}>上一题</button>
+              <button class="test-btn test-btn-primary" onclick="nextQuestion()">
+                ${currentQuestion === questions.length - 1 ? '提交测试' : '下一题'}
+              </button>
+            </div>
+          </div>
+        `;
+
+        if (answers[question.id] !== undefined) {
+          document.getElementById('option-' + answers[question.id]).classList.add('selected');
+        }
+      }
+
+      window.selectOption = function(idx) {
+        document.querySelectorAll('.option-item').forEach(opt => opt.classList.remove('selected'));
+        document.getElementById('option-' + idx).classList.add('selected');
+        answers[questions[currentQuestion].id] = idx;
+      };
+
+      window.prevQuestion = function() {
+        if (currentQuestion > 0) {
+          currentQuestion--;
+          renderQuestion();
+        }
+      };
+
+      window.nextQuestion = function() {
+        if (answers[questions[currentQuestion].id] === undefined) {
+          alert('请先选择一个答案');
+          return;
+        }
+
+        if (currentQuestion < questions.length - 1) {
+          currentQuestion++;
+          renderQuestion();
+        } else {
+          showTestResult();
+        }
+      };
+
+      renderQuestion();
+    }
+
+    function showTestResult() {
+      const totalScore = Object.values(answers || {}).reduce((sum, val) => sum + val, 0);
+      let level, description, suggestions;
+      
+      if (totalScore <= 5) {
+        level = '正常';
+        description = '你的情绪状态良好，继续保持积极的生活态度！';
+        suggestions = ['保持规律作息', '继续坚持运动', '保持社交活动'];
+      } else if (totalScore <= 10) {
+        level = '轻度焦虑';
+        description = '你可能有一些轻微的焦虑情绪，可以尝试一些放松技巧来缓解。';
+        suggestions = ['尝试深呼吸练习', '进行正念冥想', '培养兴趣爱好'];
+      } else if (totalScore <= 15) {
+        level = '中度焦虑';
+        description = '你的焦虑情绪较为明显，建议采取积极的应对措施。';
+        suggestions = ['寻求朋友家人的支持', '尝试写情绪日记', '考虑咨询专业人士'];
+      } else {
+        level = '重度焦虑';
+        description = '你的焦虑情绪比较严重，建议尽快寻求专业帮助。';
+        suggestions = ['联系心理咨询师', '拨打心理援助热线', '与学校心理中心联系'];
+      }
+
+      const container = document.getElementById('test-container');
+      container.innerHTML = `
+        <div class="container">
+          <div class="result-card">
+            <div class="result-icon">📊</div>
+            <div class="result-score">${totalScore}分</div>
+            <div class="result-level">${level}</div>
+            <div class="result-description">${description}</div>
+            <div class="result-suggestions">
+              <h4>💡 建议：</h4>
+              <ul>
+                ${suggestions.map(s => `<li>${s}</li>`).join('')}
+              </ul>
+            </div>
+            <button class="btn btn-primary" onclick="location.reload()">再测一次</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function showAddDiaryModal() {
+      const modal = document.createElement('div');
+      modal.className = 'modal-overlay active';
+      modal.innerHTML = `
+        <div class="modal">
+          <div class="modal-header">
+            <h3 class="modal-title">写日记</h3>
+            <button class="modal-close" onclick="this.closest('.modal-overlay').remove()">&times;</button>
+          </div>
+          <div class="form-group">
+            <label>标题</label>
+            <input type="text" placeholder="给日记起个标题...">
+          </div>
+          <div class="form-group">
+            <label>心情标签</label>
+            <select>
+              <option value="happy">😊 开心</option>
+              <option value="sad">😔 难过</option>
+              <option value="anxious">😰 焦虑</option>
+              <option value="angry">😠 生气</option>
+              <option value="neutral">😐 平静</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>分类</label>
+            <select>
+              <option value="daily">日常生活</option>
+              <option value="study">学业压力</option>
+              <option value="relationship">人际关系</option>
+              <option value="emotion">情绪记录</option>
+              <option value="other">其他</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>内容</label>
+            <textarea placeholder="记录今天的心情..."></textarea>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-secondary" onclick="this.closest('.modal-overlay').remove()">取消</button>
+            <button class="btn btn-primary" onclick="this.closest('.modal-overlay').remove()">保存日记</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+    }
+
+    window.showDiaryDetail = function(card) {
+      const title = card.querySelector('.diary-title').textContent;
+      const content = card.querySelector('.diary-content').textContent;
+      const date = card.querySelector('.diary-date').textContent;
+      const emotionTag = card.querySelector('.diary-emotion-tag').textContent;
+      
+      const modal = document.createElement('div');
+      modal.className = 'modal-overlay active';
+      modal.innerHTML = `
+        <div class="modal" style="max-width: 600px;">
+          <div class="modal-header">
+            <h3 class="modal-title">${title}</h3>
+            <button class="modal-close" onclick="this.closest('.modal-overlay').remove()">&times;</button>
+          </div>
+          <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+            <span class="${card.querySelector('.diary-emotion-tag').className}">${emotionTag}</span>
+            <span style="font-size: 13px; color: #999;">${date}</span>
+          </div>
+          <div style="color: #666; line-height: 1.8; white-space: pre-wrap;">${content}</div>
+          <div class="form-actions" style="margin-top: 30px;">
+            <button class="btn btn-secondary" onclick="this.closest('.modal-overlay').remove()">关闭</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+    };
+
+    let isBreathing = false;
+
+    function initBreathing() {
+      const breathingBtn = document.getElementById('start-breathing');
+      const stopBtn = document.getElementById('stop-breathing');
+      const circle = document.getElementById('breathing-circle');
+      const instruction = document.getElementById('breathing-instruction');
+
+      if (!breathingBtn) return;
+
+      breathingBtn.addEventListener('click', function() {
+        isBreathing = true;
+        runBreathingCycle(circle, instruction);
+        breathingBtn.style.display = 'none';
+        stopBtn.style.display = 'inline-block';
+      });
+
+      stopBtn.addEventListener('click', function() {
+        isBreathing = false;
+        circle.className = 'breathing-circle';
+        instruction.textContent = '准备开始';
+        stopBtn.style.display = 'none';
+        breathingBtn.style.display = 'inline-block';
+      });
+    }
+
+    function runBreathingCycle(circle, instruction) {
+      if (!isBreathing) return;
+
+      circle.className = 'breathing-circle inhale';
+      instruction.textContent = '吸气...';
+      setTimeout(() => {
+        if (!isBreathing) return;
+        circle.className = 'breathing-circle hold';
+        instruction.textContent = '保持...';
+        setTimeout(() => {
+          if (!isBreathing) return;
+          circle.className = 'breathing-circle exhale';
+          instruction.textContent = '呼气...';
+          setTimeout(() => {
+            if (!isBreathing) return;
+            runBreathingCycle(circle, instruction);
+          }, 4000);
+        }, 4000);
+      }, 4000);
+    }
+
+    function initCharts() {
+      renderTrendChart('trend-chart');
+      renderRadarChart('radar-chart');
+    }
+
+    function renderTrendChart(containerId) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      const days = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+      const data = [6, 5, 7, 4, 6, 8, 5];
+      const maxValue = Math.max(...data);
+
+      let html = '<svg width="100%" height="100%" viewBox="0 0 500 300">';
+      for (let i = 0; i <= 10; i++) {
+        const y = 50 + (200 / 10) * i;
+        html += `<line x1="50" y1="${y}" x2="450" y2="${y}" stroke="#FFE4E9" stroke-width="1"/>`;
+        html += `<text x="40" y="${y + 4}" font-size="12" fill="#999" text-anchor="end">${10 - i}</text>`;
+      }
+      days.forEach((day, idx) => {
+        const x = 50 + idx * ((400) / days.length) + 30;
+        html += `<text x="${x}" y="280" font-size="12" fill="#666" text-anchor="middle">${day}</text>`;
+      });
+      data.forEach((value, idx) => {
+        const x = 50 + idx * ((400) / days.length);
+        const height = (value / maxValue) * 200;
+        const y = 250 - height;
+        html += `<rect x="${x}" y="${y}" width="60" height="${height}" rx="8" ry="8" fill="url(#gradient1)"/>`;
+      });
+      html += '<defs><linearGradient id="gradient1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#FFB7C5"/><stop offset="100%" stop-color="#FF8BA3"/></linearGradient></defs>';
+      html += '</svg>';
+      container.innerHTML = html;
+    }
+
+    function renderRadarChart(containerId) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      const categories = ['焦虑', '抑郁', '压力', '快乐', '平静', '活力'];
+      const data = [6, 4, 7, 5, 5, 4];
+      const centerX = 250;
+      const centerY = 150;
+      const radius = 100;
+
+      let html = '<svg width="100%" height="100%" viewBox="0 0 500 300">';
+      for (let level = 1; level <= 5; level++) {
+        const r = (radius / 5) * level;
+        html += `<circle cx="${centerX}" cy="${centerY}" r="${r}" fill="none" stroke="#FFE4E9" stroke-width="1"/>`;
+      }
+      categories.forEach((cat, idx) => {
+        const angle = (Math.PI * 2 * idx) / categories.length - Math.PI / 2;
+        const x = centerX + radius * Math.cos(angle);
+        const y = centerY + radius * Math.sin(angle);
+        html += `<line x1="${centerX}" y1="${centerY}" x2="${x}" y2="${y}" stroke="#FFE4E9" stroke-width="1"/>`;
+        html += `<text x="${x}" y="${y + 5}" font-size="12" fill="#666" text-anchor="middle">${cat}</text>`;
+      });
+      let points = '';
+      data.forEach((value, idx) => {
+        const angle = (Math.PI * 2 * idx) / categories.length - Math.PI / 2;
+        const r = (radius / 10) * value;
+        const x = centerX + r * Math.cos(angle);
+        const y = centerY + r * Math.sin(angle);
+        points += `${x},${y} `;
+      });
+      html += `<polygon points="${points.trim()}" fill="rgba(255, 183, 197, 0.3)" stroke="#FFB7C5" stroke-width="2"/>`;
+      data.forEach((value, idx) => {
+        const angle = (Math.PI * 2 * idx) / categories.length - Math.PI / 2;
+        const r = (radius / 10) * value;
+        const x = centerX + r * Math.cos(angle);
+        const y = centerY + r * Math.sin(angle);
+        html += `<circle cx="${x}" cy="${y}" r="4" fill="#FF8BA3"/>`;
+      });
+      html += '</svg>';
+      container.innerHTML = html;
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      initBreathing();
+      initCharts();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+# Node.js dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+*.log
+
+# Environment variables (sensitive)
+.env
+.env.local
+.env.development
+.env.production
+.env.*.local
+
+# IDE files
+.vscode/
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
+Thumbs.db
+ehthumbs.db
+
+# Testing
+coverage/
+.nyc_output/
+
+# Cache
+.cache/
+.parcel-cache/
+.eslintcache

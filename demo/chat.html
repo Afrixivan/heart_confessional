@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对话陪伴 - 心灵树洞</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <div class="logo" onclick="location.href='index.html'">
+        <div class="logo-icon">🌳</div>
+        <span>心灵树洞</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <a href="chat.html" class="active">对话陪伴</a>
+        <a href="emotion.html">情绪分析</a>
+        <a href="knowledge.html">心理知识</a>
+        <a href="test.html">心理测试</a>
+        <a href="diary.html">情绪日记</a>
+      </div>
+      <div class="user-menu">
+        <button class="btn btn-outline">登录</button>
+        <div class="user-avatar">👤</div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="chat-container">
+    <aside class="chat-sidebar">
+      <div class="sidebar-header">
+        <h3 class="sidebar-title">对话历史</h3>
+        <button class="new-chat-btn">+ 新对话</button>
+      </div>
+      <div class="conversation-list">
+        <div class="conversation-item active">
+          <div class="conversation-preview">
+            <div class="conversation-avatar">💬</div>
+            <div class="conversation-info">
+              <div class="conversation-title">今天的心情</div>
+              <div class="conversation-last-message">我最近感觉压力很大...</div>
+            </div>
+            <div class="conversation-time">刚刚</div>
+          </div>
+        </div>
+        <div class="conversation-item">
+          <div class="conversation-preview">
+            <div class="conversation-avatar">💭</div>
+            <div class="conversation-info">
+              <div class="conversation-title">考试焦虑</div>
+              <div class="conversation-last-message">马上要期末考试了...</div>
+            </div>
+            <div class="conversation-time">今天</div>
+          </div>
+        </div>
+        <div class="conversation-item">
+          <div class="conversation-preview">
+            <div class="conversation-avatar">❤️</div>
+            <div class="conversation-info">
+              <div class="conversation-title">人际关系</div>
+              <div class="conversation-last-message">和室友闹矛盾了...</div>
+            </div>
+            <div class="conversation-time">昨天</div>
+          </div>
+        </div>
+        <div class="conversation-item">
+          <div class="conversation-preview">
+            <div class="conversation-avatar">🎓</div>
+            <div class="conversation-info">
+              <div class="conversation-title">学业压力</div>
+              <div class="conversation-last-message">专业课太难了...</div>
+            </div>
+            <div class="conversation-time">3天前</div>
+          </div>
+        </div>
+        <div class="conversation-item">
+          <div class="conversation-preview">
+            <div class="conversation-avatar">🌱</div>
+            <div class="conversation-info">
+              <div class="conversation-title">自我介绍</div>
+              <div class="conversation-last-message">你好，我是心灵树洞...</div>
+            </div>
+            <div class="conversation-time">1周前</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="chat-main">
+      <div class="chat-header">
+        <div>
+          <h3 class="chat-title">今天的心情</h3>
+          <p style="font-size: 13px; color: #999;">开始于 2026-07-17 10:30</p>
+        </div>
+        <div class="chat-actions">
+          <button style="width: 36px; height: 36px; border-radius: 50%; border: 2px solid #FFE4E9; background: white; cursor: pointer;" title="重新开始">🔄</button>
+          <button style="width: 36px; height: 36px; border-radius: 50%; border: 2px solid #FFE4E9; background: white; cursor: pointer;" title="更多选项">⋮</button>
+        </div>
+      </div>
+
+      <div id="chat-messages" class="chat-messages">
+        <div class="message assistant">
+          <div class="message-content">你好呀！我是心灵树洞，很高兴认识你🌱
+
+我是一个温暖、包容、耐心、真诚的朋友，随时在这里听你倾诉。无论是学业压力、人际关系、情感问题还是其他困扰，都可以和我说说。
+
+我不是专业心理咨询师，不能提供医学诊断或治疗建议，但我会尽我所能陪伴你、支持你。
+
+现在，你想聊些什么呢？💝</div>
+          <div class="message-time">10:30</div>
+        </div>
+        <div class="message user">
+          <div class="message-content">我最近感觉压力很大，马上要期末考试了，还有很多作业没完成，感觉自己要崩溃了</div>
+          <div class="message-time">10:32</div>
+        </div>
+        <div class="message assistant">
+          <div class="message-content">我完全理解你的感受，期末考试前的压力确实会让人感到喘不过气来💝
+
+让我们一起梳理一下，看看能不能找到一些缓解的方法：
+
+1. 📝 先列一个清单，把需要完成的任务按优先级排序
+2. ⏰ 把大任务分解成小步骤，每完成一个就给自己一个小奖励
+3. 🌬️ 每学习45-60分钟，就站起来活动一下，做个深呼吸
+4. 💤 保证充足的睡眠，大脑需要休息才能高效学习
+
+你觉得这些方法怎么样？或者你有其他的想法想和我说说？✨</div>
+          <div class="message-time">10:33</div>
+        </div>
+        <div class="message user">
+          <div class="message-content">谢谢你的建议，我觉得很有帮助。但是我还是很焦虑，担心自己考不好</div>
+          <div class="message-time">10:35</div>
+        </div>
+      </div>
+
+      <div class="chat-input-area">
+        <div class="input-container">
+          <textarea id="chat-input" class="chat-input" placeholder="输入你想说的话..." rows="1"></textarea>
+          <button id="send-btn" class="send-btn" type="button">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 2L11 13"></path>
+              <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

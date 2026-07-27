@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>情绪分析 - 心灵树洞</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <div class="logo" onclick="location.href='index.html'">
+        <div class="logo-icon">🌳</div>
+        <span>心灵树洞</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">首页</a>
+        <a href="chat.html">对话陪伴</a>
+        <a href="emotion.html" class="active">情绪分析</a>
+        <a href="knowledge.html">心理知识</a>
+        <a href="test.html">心理测试</a>
+        <a href="diary.html">情绪日记</a>
+      </div>
+      <div class="user-menu">
+        <button class="btn btn-outline">登录</button>
+        <div class="user-avatar">👤</div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="emotion-analysis-container">
+    <div class="container">
+      <div class="time-range-selector">
+        <button class="time-btn active">本周</button>
+        <button class="time-btn">本月</button>
+        <button class="time-btn">近3个月</button>
+        <button class="time-btn">自定义</button>
+      </div>
+
+      <div class="charts-grid">
+        <div class="chart-card">
+          <h3 class="chart-title">情绪趋势</h3>
+          <div id="trend-chart" class="chart-container"></div>
+        </div>
+        <div class="chart-card">
+          <h3 class="chart-title">情绪雷达图</h3>
+          <div id="radar-chart" class="chart-container"></div>
+        </div>
+      </div>
+
+      <div class="mood-calendar">
+        <div class="calendar-header">
+          <button class="calendar-nav">‹</button>
+          <h3 style="font-size: 18px; font-weight: 600;">2026年7月</h3>
+          <button class="calendar-nav">›</button>
+        </div>
+        <div class="calendar-grid"></div>
+      </div>
+
+      <div class="emotion-report">
+        <h3 class="report-title">📋 情绪分析报告</h3>
+        
+        <div class="report-section">
+          <h4>📊 总体情况</h4>
+          <p style="color: #666; line-height: 1.7;">本周共记录 <strong style="color: #FF8BA3;">15</strong> 条情绪记录，平均情绪指数为 <strong style="color: #FF8BA3;">6.2</strong>。整体情绪状态处于中等水平，建议适当进行放松练习。</p>
+        </div>
+
+        <div class="report-section">
+          <h4>🔑 关键发现</h4>
+          <ul class="report-list">
+            <li><strong>焦虑情绪</strong>在周三、周四达到高峰，可能与期末考试临近有关</li>
+            <li><strong>压力指数</strong>整体偏高，建议合理安排学习计划，避免过度劳累</li>
+            <li><strong>积极情绪</strong>在周末有所回升，说明休息和娱乐对情绪调节有帮助</li>
+            <li><strong>情绪波动较大</strong>，建议尝试情绪日记记录，更好地了解情绪变化规律</li>
+          </ul>
+        </div>
+
+        <div class="report-section">
+          <h4>💡 成长建议</h4>
+          <ul class="report-list">
+            <li>🎯 每天安排30分钟的放松时间，可以尝试呼吸练习或正念冥想</li>
+            <li>📝 坚持写情绪日记，记录每天的情绪变化和触发事件</li>
+            <li>👥 适当与朋友或家人交流，不要独自承担所有压力</li>
+            <li>💤 保证每天7-8小时的睡眠，这对情绪稳定非常重要</li>
+            <li>🌳 每周安排一次户外活动，接触大自然有助于缓解压力</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
